@@ -1,0 +1,558 @@
+@import "meyerweb";
+@import "variables";
+@import "reboot";
+@import 'animation';
+@import "common";
+
+.clockWrap {
+  display: flex;
+  height: 100vh;
+}
+
+.clockMain {
+  background: $lightPink;
+  flex: 0 0 65%;
+  min-height: 100%;
+  padding: 48px 0;
+  &.break {
+    background: $paleBlue;
+  }
+  &__content {
+    max-width: 54%;
+    margin-left: 120px;
+  }
+  &__addMisson {
+    margin-bottom: 160px;
+    animation: slideIn5 1.5s cubic-bezier(0.74,-0.68, 0.24, 1.58);}
+  &__doing {
+    display: flex;
+    margin-bottom: 24px;
+    // justify-content: center;
+    $size: 60px;
+    $size-m: $size * 0.8;
+    animation: slideIn5 1.5s cubic-bezier(0.74,-0.68, 0.24, 1.58);
+    &__checkbox {
+      width: $size;
+      height: $size;
+      @media (max-width: 1280px) {
+        width: $size-m;
+        height: $size-m;
+      }
+    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 3.5%;
+    }
+    &__title {
+      font-size: $font-s;
+      @media (max-width: 1280px) {
+        font-size: $font-s * 0.8;
+      }
+    }
+    &__circles {
+      span {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid $vividPink;
+        margin-left: 3px;
+        @media (max-width: 1280px) {
+          width: 12px;
+          height: 12px;
+        }
+        &:nth-child(1) {
+          margin-left: 0;
+        }
+      }
+      &.break {
+        span {
+          border-color: $dark;
+          background: $dark;
+        }
+      }
+    }
+  }
+  &__time {
+    font-size: $font-xl;
+    color: $vividPink;
+    text-align: center;
+    margin-bottom: 150px;
+    animation: slideIn2 2s cubic-bezier(0.56,-0.37, 0.49, 1.41);
+    @media (max-width: 1280px) {
+      font-size: $font-xl * 0.8;
+    }
+    &.break {
+      color: $pureBlue;
+    }
+  }
+  &__tasks {
+    animation: slideIn4 1.5s cubic-bezier(0.74,-0.68, 0.24, 1.58);
+  }
+  &__more {
+    color: $vividPink;
+    margin-top: 12px;
+    text-align: right;
+    @media (max-width: 1280px) {
+      font-size: $font-base * 0.8;
+    }
+    a {
+      color: $vividPink;
+    }
+    &.break {
+      a {
+        color: $pureBlue;
+      }
+    }
+  }
+}
+.clockMenu {
+  background: $dark;
+  position: relative;
+  flex: 0 0 35%;
+  height: 100%;
+  padding: 48px 0;
+  display: flex;
+  justify-content: flex-end;
+  &__content {
+    position: relative;
+    margin-right: 120px;
+    animation: slideIn3 1.5s cubic-bezier(0.74,-0.68, 0.24, 1.58);
+    .material-icons {
+      color: $white;
+      font-size: 45px;
+      transition: all .3s;
+      @media (max-width: 1280px) {
+        font-size: 36px;
+      }
+      &:hover {
+        color: $vividPink;
+      }
+    }
+  }
+  &__menu {
+    li {
+      margin-bottom: 60px;
+    }
+  }
+  &__logoTitle {
+    color: $white;
+    transform: rotate(90deg) translateX(-110px);
+    transform-origin: 21.5% 0%;
+    font-size: $font-s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    @media (max-width: 1280px) {
+      font-size: $font-s * 0.8;
+    }
+  }
+  &__Player {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 650px;
+    height: 650px;
+    padding: 4px;
+    // border: 4px solid $vividPink;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    animation: slideIn1 2s cubic-bezier(0.56,-0.37, 0.49, 1.41),opacitys 0.7s ease-in-out 4s;
+    &:before {
+      $size: 0;
+      content: "";
+      position: absolute;
+      display: block;
+      left: $size;
+      top: $size;
+      right: $size;
+      bottom: $size;
+      border: 4px solid $vividPink;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    @media (max-width: 1280px) {
+      width: 480px;
+      height: 480px;
+    }
+    &.break {
+      &:before {     
+        border-color: $pureBlue;
+      }
+    }
+    &__content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 612px;
+      height: 612px;
+      border-radius: 50%;
+      border: 4px solid $vividPink;
+      background: $vividPink;
+      animation: circle-color1 2s linear 2s;
+      @media (max-width: 1280px) {
+        width: 442px;
+        height: 442px;
+      }
+      &.break {
+        border-color: $pureBlue;
+        background: $pureBlue;
+      }
+
+      &.working {
+        background: $white;
+      }
+      &.breaking {
+        background: $white;
+      }
+    }
+    svg {
+      transform: rotate(-90deg);
+    }
+    .svgCircle {
+      // stroke-dashoffset: 0;
+      stroke-dasharray: 2000;
+      animation: circle-draw 2s linear 2s;
+      @media (max-width: 1280px) {
+        cx: 236; 
+        cy: 236;
+        r: 228.5;
+        stroke-width: 16;
+      }
+      &.working {
+        stroke: $vividPink;
+      }
+      &.breaking{
+        stroke: $pureBlue;
+      }
+    }
+    &__startbtn,&__plusebtn {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      cursor: pointer;
+      &.isOverhiden {
+        left: 0;
+        top: 0;
+        width: 0;
+        overflow: hidden;
+      }
+      &:after {
+        $size: 15px;
+        content: "";
+        position: absolute;
+        display: block;
+        right: -$size;
+        bottom: 0;
+        width: $size;
+        height: $size;
+        background: $white;
+      }
+    }
+    &__startbtn {
+      background: $white;
+      animation: scale 2.5s ease-in-out 4.5s,circle-color2 2s linear 2s;
+      &:before {
+        $size: 25px;
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: 5px;
+        transform: translate(-50%, -50%);
+        border-width: $size 0 $size $size*1.5;
+        border-style: solid;
+        border-color: transparent transparent transparent $vividPink;
+        animation: circle-color3 2s linear 2s;
+      }
+      &.break {
+        &:before {     
+          border-color: transparent transparent transparent $pureBlue;
+        }
+      }
+      &:after {
+        background: $white;
+        animation: circle-color2 2s linear 2s;
+      }
+    }
+    &__plusebtn {
+      background: $vividPink;
+      text-align: center;
+      &:after {
+        background: $vividPink;
+      }
+      .material-icons {
+        color: $white;
+        font-size: 60px;
+        line-height: 120px;
+      }
+      &.breaking {
+        background: $pureBlue;
+        &:after {     
+          background: $pureBlue;
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------
+
+
+.optionBg {
+  background: $dark;
+  height: 100vh;
+  padding: 48px 120px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.optionMenu {
+  flex: 0 0 32%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  li {
+    margin-bottom: 50px;
+  }
+  .optionMenu__menu__item {
+    color: rgba($white, .2);
+    display: flex;
+    align-items: center;
+    transition: all .3s;
+    &:hover {
+      color: $vividPink;
+    }
+    &--active {
+      color: $vividPink;
+    }
+  }
+  .material-icons {
+    font-size: 45px;
+  }
+  span {
+    font-size: $font-m;
+    margin-left: 12px;
+  } 
+  &__player {
+    $size: 530px;
+    position: relative;
+    width: $size;
+    height: $size / 2;
+    background: $lightPink;
+    border-radius: $size $size 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__time {
+      font-size: $font-l;
+      color: $vividPink;
+      margin-bottom: 8px;
+      margin-top: 40px;
+    }
+    &__circleBox {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      background: $dark;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      border-radius: 50%;
+      &:before {
+        $size: 11px;
+        content: "";
+        display: block;
+        position: absolute;
+        top: $size;
+        bottom: $size;
+        left: $size;
+        right: $size;
+        border: 2px solid $vividPink;
+        border-radius: 50%;
+      }
+    }
+    &__btn {
+      $size: 24px;
+      position: absolute;
+      top: $size;
+      bottom: $size;
+      left: $size;
+      right: $size;
+      background: $vividPink;
+      border-radius: 50%;
+      cursor: pointer;
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: 5px;
+        transform: translate(-50%, -50%);
+        border-width: $size 0 $size $size*1.5;
+        border-style: solid;
+        border-color: transparent transparent transparent $white;
+      }
+    }
+  }
+}
+
+.optionList {
+  flex: 0 0 40%;
+  perspective: 1000px;
+}
+
+.optionLeave {
+  width: 60px;
+  position: relative;
+  &__btn {
+    font-size: 60px;
+    color: $white;
+    transition: all .3s;
+    animation: slideIn5 1.5s cubic-bezier(0.74,-0.68, 0.24, 1.58);
+    &:hover {
+      color: $paleBlue;
+      transform: rotate(180deg);
+    }
+  }
+  &__logoTitle {
+    color: $white;
+    transform: rotate(90deg) translateX(-90%);
+    transform-origin: 26% 0%;
+    font-size: $font-s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+// -------------------------------------
+
+.list {
+  transform-style: preserve-3d;
+  animation: slideIn6 2s linear;
+  &__addMisson {
+    margin-bottom: 60px;
+  }
+  &__todo {
+    margin-bottom: 60px;
+    &__items {
+      &.hide {
+        height: 0;
+        overflow: hidden;
+      }
+    }
+    .task {
+      color: $white;
+    }
+  }
+  &__done {
+    .task {
+      color: $white;
+    }
+    &__items {
+      &.hide {
+        height: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+// ----------------------------------------
+
+.analytics{
+  transform-style: preserve-3d;
+  animation: slideIn6 2s linear;
+  &__data{
+    .dropdown {
+      display: flex;
+      align-items: center;
+    }
+    &__time {
+      position: relative;
+      margin-left: auto;
+      padding: 0 35px;
+      font-size: $font-base;
+      &:before,&:after {
+        font-size: $font-s;
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+      &:before {
+        content: "<";
+        left: 0;
+      }
+      &:after {
+        content: ">";
+        right: 0;
+      }
+    }
+  }
+  &__time {
+    margin-bottom: 70px;
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      &.hide {
+        height: 0;
+        overflow: hidden;
+      }
+    }
+    &__title {
+      color: $white;
+      margin-bottom: 8px;
+    }
+    &__num {
+      color: $vividPink;
+      font-size: $font-l;
+    }
+    &__unit {
+      margin-left: 10px;
+      color: rgba($white, .2);
+    }
+  }
+}
+
+// ---------------------------------------
+
+.ringtones{
+  transform-style: preserve-3d;
+  animation: slideIn6 2s linear;
+  &__work {
+    margin-bottom: 60px;
+  }
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    &.hide {
+      height: 0;
+      overflow: hidden;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    flex: 0 0 33.33%;
+    color: $white;
+    margin-bottom: 25px;
+    span {
+      margin-left: 6px;
+    }
+  }
+}

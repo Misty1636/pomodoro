@@ -1,0 +1,166 @@
+@keyframes circle-draw {
+  0% {
+    // stroke: lighten($vividPink, 15%);
+    stroke: $vividPink;
+  }
+  100% {
+    // stroke: lighten($vividPink, 15%);
+    stroke: $vividPink;
+    stroke-dashoffset: 2000;
+  }
+}
+
+@keyframes circle-color1 {
+  0%,99.99% {
+    background: $white;
+  }
+  100% {
+    background: $vividPink;
+  }
+}
+
+@keyframes circle-color2 {
+  0%,99.99% {
+    background: $vividPink;
+  }
+  100% {
+    background: $white;
+  }
+}
+
+@keyframes circle-color3 {
+  0%,99.99% {
+    border-color: transparent transparent transparent $white;
+  }
+  100% {
+    border-color: transparent transparent transparent $vividPink;
+  }
+}
+
+@keyframes opacitys {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scale {
+  0%,
+  50%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  25%,
+  75% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes slideIn1 {
+  0% {
+    filter: blur(20px);
+    transform: translate(-50%, -50%) rotate(0) scale(0);
+    box-shadow: 0 0 100px 250px lighten($vividPink, 15%);
+  }
+  100% {
+    filter: blur(0px);
+    transform: translate(-50%, -50%) rotate(1800deg) scale(1);
+    box-shadow: none;
+  }
+}
+
+@keyframes slideIn2 {
+  0%,
+  40%,
+  80% {
+    opacity: 0;
+  }
+  20%,
+  60%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn3 {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn4 {
+  0% {
+    filter: blur(10px);
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn5 {
+  0% {
+    filter: blur(10px);
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn6 {
+  0% {
+    transform: rotateY(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: rotateY(360deg);
+    opacity: 0.5;
+  }
+
+  30% {
+    transform: rotateY(340deg);
+  }
+
+  40% {
+    transform: rotateY(360deg);
+  }
+
+  50% {
+    transform: rotateY(350deg);
+  }
+
+  60% {
+    transform: rotateY(360deg);
+  }
+
+  70% {
+    transform: rotateY(355deg);
+  }
+
+  80% {
+    transform: rotateY(360deg);
+  }
+
+  90% {
+    transform: rotateY(358deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+    opacity: 1;
+  }
+}
