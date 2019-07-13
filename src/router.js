@@ -16,22 +16,22 @@ export default new Router({
       component: () => import('./views/Home.vue'),
     },
     {
-      path: '/',
+      path: '/page',
       name: 'layout',
       component: () => import('./views/Layout.vue'),
       children: [
         {
-          path: 'list',
+          path: '/list',
           name: 'list',
           component: () => import('./views/List.vue'),
         },
         {
-          path: 'analytics',
+          path: '/analytics',
           name: 'analytics',
           component: () => import('./views/Analytics.vue'),
         },
         {
-          path: 'ringtones',
+          path: '/ringtones',
           name: 'ringtones',
           component: () => import('./views/Ringtones.vue'),
         },

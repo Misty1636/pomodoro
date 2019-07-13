@@ -3,15 +3,15 @@
     .optionMenu
       ul.optionMenu__menu
         li
-          router-link(to="/list").optionMenu__menu__item
+          router-link(to="/page/list").optionMenu__menu__item
             i.material-icons list
             span to-do list
         li
-          router-link(to="/analytics").optionMenu__menu__item
+          router-link(to="/page/analytics").optionMenu__menu__item
             i.material-icons insert_chart
             span analytics
         li
-          router-link(to="/ringtones").optionMenu__menu__item
+          router-link(to="/page/ringtones").optionMenu__menu__item
             i.material-icons library_music
             span ringtones
       .optionMenu__player
