@@ -37,11 +37,11 @@
       .clockMenu__content
         ul.clockMenu__menu
           li
-            router-link(to="/page/list").material-icons list
+            router-link(to="list").material-icons list
           li
-            router-link(to="/page/analytics").material-icons insert_chart
+            router-link(to="analytics").material-icons insert_chart
           li
-            router-link(to="/page/ringtones").material-icons library_music
+            router-link(to="ringtones").material-icons library_music
         span.clockMenu__logoTitle POMODORO
       .clockMenu__Player(:class="{break : status === 'breaking'}")
         svg(width="100%" height="100%")

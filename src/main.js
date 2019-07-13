@@ -10,3 +10,12 @@ new Vue({
   store,
   render: h => h(App),
 }).$mount('#app');
+
+router.onError((error) => {
+  const pattern = /Loading chunk (\d)+ failed/g;
+  const isChunkLoadFailed = error.message.match(pattern);
+  const targetPath = router.history.pending.fullPath;
+  if (isChunkLoadFailed) {
+    router.replace(targetPath);
+  }
+});
